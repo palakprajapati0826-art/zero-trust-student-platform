@@ -38,3 +38,8 @@ Database: To be added
 👨‍💻 Development
 
 This project is currently under development.
+
+Frontend: React.js + Tailwind CSS
+Backend: Node.js + Express.js
+Database: MongoDB
+Authentication: JWT
