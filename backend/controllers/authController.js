@@ -43,7 +43,7 @@ const registerUser = async (req, res) => {
         userId: user._id,
         role: user.role,
       },
-      process.env.JWT_SECRET || "zero-trust-development-secret",
+      process.env.JWT_SECRET,
       {
         expiresIn: "1d",
       }
@@ -70,8 +70,6 @@ const registerUser = async (req, res) => {
   }
 };
 
-
-// LOGIN
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -106,7 +104,7 @@ const loginUser = async (req, res) => {
         userId: user._id,
         role: user.role,
       },
-      process.env.JWT_SECRET || "zero-trust-development-secret",
+      process.env.JWT_SECRET,
       {
         expiresIn: "1d",
       }
