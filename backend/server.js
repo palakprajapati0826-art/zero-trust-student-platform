@@ -1,27 +1,23 @@
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
+const studentRoutes = require("./routes/studentRoutes");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+connectDB();
+
 app.get("/", (req, res) => {
   res.send("Zero Trust Student Platform Backend Running");
 });
 
-const startServer = async () => {
-  try {
-    await connectDB();
+app.use("/api/auth", authRoutes);
+app.use("/api/student", studentRoutes);
 
-    app.listen(5000, "127.0.0.1", () => {
-      console.log("Server running on http://127.0.0.1:5000");
-    });
-  } catch (error) {
-    console.error("Server startup failed:", error.message);
-    process.exit(1);
-  }
-};
-
-startServer();
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
+});
